@@ -22,8 +22,8 @@ module Lib
         @storage.save
       end
 
-      def top_readers(_amount = 1)
-        top_obj(:reader, :book, 1)
+      def top_readers(amount = 1)
+        top_obj(:reader, :book, amount)
       end
 
       def top_books(_amount = 1)
