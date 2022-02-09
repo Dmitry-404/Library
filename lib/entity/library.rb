@@ -61,10 +61,9 @@ module Lib
         }[class_of_obj]
       end
 
-      def is_equal(object)
-        bool = false
-        get_property_by_class(object.class).each {|obj| bool = true if obj.eql?(object)}
-        bool
+      def object_present?(object)
+        property = get_property_by_class(object.class)
+        property.include?(object)
       end
 
       def nested_objects(object)
