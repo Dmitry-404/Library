@@ -46,7 +46,7 @@ module Lib
 
       private
 
-      def top_obj(grouped, uniqued, amount = 1)
+      def fetch_top_objects(grouped_by, uniqued_by, amount)
         @orders.group_by(&grouped).transform_values do |values|
           values.uniq(&uniqued).count
         end.to_a.max_by(amount, &:last).map(&:first)
