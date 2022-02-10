@@ -16,8 +16,8 @@ module Lib
         "Name : #{name} \n\ Biography: #{biography}"
       end
 
-      def eql?(other)
-        to_s == other.to_s
+      def ==(other)
+        name == other.name && biography == other.biography
       end
 
       private
