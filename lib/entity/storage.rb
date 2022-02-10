@@ -25,17 +25,14 @@ module Lib
 
       private
 
-      def initialize_db
-        if is_exist
-          store.transaction do
-            store.roots.to_h do |key|
-              [key, store[key]]
-            end
+      def load_data
+        @data = store.transaction do
+          store.roots.to_h do |key|
+            [key, store[key]]
           end
-        else
-          create_dir
-          output_data
         end
+        
+        @data = empty_data if @data.empty?
       end
 
       def is_exist
