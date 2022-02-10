@@ -43,7 +43,7 @@ module Lib
         Dir.mkdir(File.join(STORAGE_DIR))
       end
 
-      def output_data
+      def empty_data
         {
           authors: [],
           books: [],
