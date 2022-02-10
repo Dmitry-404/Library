@@ -8,7 +8,7 @@ module Lib
       attr_accessor :data
 
       def initialize
-        @data = initialize_db
+        load_data
       end
 
       def store
