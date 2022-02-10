@@ -23,11 +23,11 @@ module Lib
       end
 
       def top_readers(amount = 1)
-        top_obj(:reader, :book, amount)
+        fetch_top_objects(:reader, :book, amount)
       end
 
-      def top_books(_amount = 1)
-        top_obj(:book, :reader, 1)
+      def top_books(amount = 1)
+        fetch_top_objects(:book, :reader, amount)
       end
 
       def number_of_readers_of_the_most_popular_books(amount = 3)
@@ -37,8 +37,7 @@ module Lib
       def add(object)
         if AVAILABLE_ENTITY.include?(object.class)
           nested_objects(object)
-          
-          get_property_by_class(object.class) << object unless is_equal(object)
+          get_property_by_class(object.class) << object unless object_present?(object)
         else
           raise UnexpectedClassError
         end
@@ -47,8 +46,8 @@ module Lib
       private
 
       def fetch_top_objects(grouped_by, uniqued_by, amount)
-        @orders.group_by(&grouped).transform_values do |values|
-          values.uniq(&uniqued).count
+        @orders.group_by(&grouped_by).transform_values do |values|
+          values.uniq(&uniqued_by).count
         end.to_a.max_by(amount, &:last).map(&:first)
       end
 
@@ -62,19 +61,11 @@ module Lib
       end
 
       def object_present?(object)
-        property = get_property_by_class(object.class)
-        property.include?(object)
+        get_property_by_class(object.class).include?(object)
       end
 
       def nested_objects(object)
-        case object
-        when Book
-          add(object.author)
-
-        when Order
-          add(object.reader)
-          add(object.book)
-        end
+        object.add_nested_in(self)
       end
     end
   end

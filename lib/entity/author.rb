@@ -20,6 +20,9 @@ module Lib
         name == other.name && biography == other.biography
       end
 
+      def add_nested_in(library)
+      end
+
       private
 
       def validation(name)

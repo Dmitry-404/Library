@@ -17,8 +17,13 @@ module Lib
         book.to_s + reader.to_s + date.to_s
       end
 
-      def eql?(other)
-        to_s == other.to_s
+      def ==(other)
+        book == other.book && reader == other.reader && date == other.date
+      end
+
+      def add_nested_in(library)
+        library.add(book)
+        library.add(reader)
       end
 
       private

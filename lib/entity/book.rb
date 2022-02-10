@@ -16,8 +16,12 @@ module Lib
         "Title : #{title} \n\ Author : #{author}\n"
       end
 
-      def eql?(other)
-        to_s == other.to_s
+      def ==(other)
+        title == other.title && author == other.author
+      end
+
+      def add_nested_in(library)
+        library.add(author)
       end
 
       private

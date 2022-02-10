@@ -19,10 +19,12 @@ module Lib
         " Name: #{name}\n\ Email: #{email}\n\ City: #{city}\n\ Street: #{street} #{house}\n"
       end
 
-      def eql?(other)
-        to_s == other.to_s
+      def ==(other)
+        name == other.name && email == other.email && city == other.city && street == other.street && house == other.house
       end
 
+      def add_nested_in(library)
+      end
       private
 
       def validation(name, email, city, street, house)
