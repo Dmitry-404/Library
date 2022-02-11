@@ -2,7 +2,7 @@
 
 module Lib
   module Entity
-    class Reader < Entities
+    class Reader < Entity
       attr_reader :name, :email, :city, :street, :house
 
       def initialize(name, email, city, street, house)

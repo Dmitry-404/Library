@@ -2,7 +2,7 @@
 
 module Lib
   module Entity
-    class Book < Entities
+    class Book < Entity
       attr_reader :title, :author
 
       def initialize(title, author)
@@ -23,10 +23,6 @@ module Lib
         library.add(author)
       end
 
-      def add_in(library)
-        library.add(author)
-      end
-      
       private
 
       def validation(title, author)

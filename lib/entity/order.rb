@@ -2,7 +2,7 @@
 
 module Lib
   module Entity
-    class Order < Entities
+    class Order < Entity
       attr_reader :book, :reader, :date
 
       def initialize(book, reader, date = Date.today)
