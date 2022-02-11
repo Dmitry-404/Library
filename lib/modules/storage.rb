@@ -26,16 +26,16 @@ module Lib
       private
 
       def load_data
+        create_dir unless dir_exist?
         @data = store.transaction do
           store.roots.to_h do |key|
             [key, store[key]]
           end
         end
-        
         @data = empty_data if @data.empty?
       end
 
-      def is_exist
+      def dir_exist?
         Dir.exist?(STORAGE_DIR)
       end
 
