@@ -2,8 +2,7 @@
 
 module Lib
   module Entity
-    class Order
-      include Modules::Validator
+    class Order < Entities
       attr_reader :book, :reader, :date
 
       def initialize(book, reader, date = Date.today)

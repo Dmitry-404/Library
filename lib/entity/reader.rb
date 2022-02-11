@@ -2,8 +2,7 @@
 
 module Lib
   module Entity
-    class Reader
-      include Modules::Validator
+    class Reader < Entities
       attr_reader :name, :email, :city, :street, :house
 
       def initialize(name, email, city, street, house)
@@ -23,8 +22,6 @@ module Lib
         name == other.name && email == other.email && city == other.city && street == other.street && house == other.house
       end
 
-      def add_nested_in(library)
-      end
       private
 
       def validation(name, email, city, street, house)

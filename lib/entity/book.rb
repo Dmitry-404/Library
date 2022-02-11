@@ -2,8 +2,7 @@
 
 module Lib
   module Entity
-    class Book
-      include Modules::Validator
+    class Book < Entities
       attr_reader :title, :author
 
       def initialize(title, author)
@@ -24,6 +23,10 @@ module Lib
         library.add(author)
       end
 
+      def add_in(library)
+        library.add(author)
+      end
+      
       private
 
       def validation(title, author)

@@ -2,8 +2,8 @@
 
 module Lib
   module Entity
-    class Author
-      include Modules::Validator
+    class Author < Entities
+  
       attr_reader :name, :biography
 
       def initialize(name, biography = ' ')
@@ -19,10 +19,6 @@ module Lib
       def ==(other)
         name == other.name && biography == other.biography
       end
-
-      def add_nested_in(library)
-      end
-
       private
 
       def validation(name)
